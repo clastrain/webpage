@@ -117,7 +117,9 @@ const random = Math.floor(Math.random() * 10) + 1
           <a class=" w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded">
             Dexscreener
           </a>
-          <a class=" w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded">
+          <a class=" w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded"
+            href="https://x.com/NeonTraderAI" target="_blank" rel="noopener noreferrer"
+          >
             X
           </a>
           <a class=" w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded">
