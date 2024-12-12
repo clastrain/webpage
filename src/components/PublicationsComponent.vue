@@ -11,7 +11,7 @@
         <div class="publication-header">
           <span class="date">{{ formatDate(publication.created_at) }}</span>
           <span class="status" :class="{ 'status-active': publication.status }">
-            {{ publication.status ? 'Hold' : 'Dump' }}
+            {{ publication.status ? 'Hold' : 'Sold' }}
           </span>
         </div>
         <div class="publication-content">
