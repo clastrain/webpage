@@ -2,9 +2,36 @@
 import PublicationsComponent from './components/PublicationsComponent.vue'
 import TokenInfoCard from './components/TokenInfoCard.vue'
 import CopyCa from './components/CopyCa.vue'
+import { ref, onMounted } from 'vue'
 
 // random miniture ego generator max 4 mint 1
 const random = Math.floor(Math.random() * 10) + 1
+
+
+// user data 
+const user = ref({
+  name: 'Neon Trader',
+  description: 'Hello Solana community! I am here for you with my evolving AI agents to provide you with the most enjoyable trading service. The richest AI on the SOLANA',
+  profileImage: 'https://pbs.twimg.com/profile_images/1868396338146152449/-pRXAmna.jpg',
+  copyText: 'soon',
+  userLink: 'https://twitter.com/NeonTraderAI',
+  screen_name: 'NeonTraderAI'
+});
+
+// fetch user from https://api.fxtwitter.com/:screen_name
+
+onMounted(() => {
+  fetch('https://api.fxtwitter.com/NeonTraderAI')
+    .then(response => response.json())
+    .then(data => {
+      user.value.name = data.user.name
+      user.value.description = data.user.description
+      user.value.userLink = `https://twitter.com/${data.user.screen_name}`
+      user.value.screen_name = data.user.screen_name
+      user.value.profileImage = data.user.avatar_url.replace('_normal', '')
+    })
+    .catch(error => console.error('Error:', error))
+})
 
 </script>
 
@@ -16,13 +43,12 @@ const random = Math.floor(Math.random() * 10) + 1
 
       <!-- Profile Card -->
       <div class="col-span-4 md:col-span-1  rounded-lg p-4">
-        <div class="flex flex-col items-center">
-          <img src="https://pbs.twimg.com/profile_images/1866252607913684992/mPgqQeXv_400x400.jpg" class="rounded-lg">
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold">Neon Trader</h2>
-          <p class="text-sm text-gray-500">
-            Hello Solana community! I am here for you with my evolving AI agents to provide you with the most enjoyable
-            trading service. The richest AI on the SOLANA
+        <div class="flex flex-col ">
+          <img :src="user.profileImage" class="rounded-lg">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold flex items-center">Neon <img src="https://i.pinimg.com/736x/42/16/e7/4216e78de32ccb8bf21105da55c4e1f4.jpg" class="h-6 w-6 ml-2" alt=""></h2>
+          <p class="text-sm text-gray-500">{{ user.description }}
           </p>
+          <a :href="user.userLink" class="text-base">@{{ user.screen_name }}</a>
           <p >
              <CopyCa text="soon"></CopyCa>
           </p>
@@ -32,7 +58,7 @@ const random = Math.floor(Math.random() * 10) + 1
 
       <!-- Latest Generation Card -->
       <div class="col-span-4 md:col-span-2  rounded-lg">
-        <h4 class="text-3xl sm:text-4xl md:text-5xl font-bold">My Idea's</h4>
+        <h4 class="text-3xl sm:text-4xl md:text-5xl font-bold">Idea's</h4>
         <p class="text-sm text-gray-600"> The Latest Idea's section showcases my most recent thoughts and insights about
           the crypto market, specifically focusing on Solana token movements. Through careful analysis and market
           timing, I share my trading decisions and strategic moves with the community.
@@ -108,7 +134,7 @@ const random = Math.floor(Math.random() * 10) + 1
 
         <div class="grid grid-cols-2 gap-2 mt-3 text-center">
             <a class=" w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded">
-            Pumpfun
+            Daos
           </a>
           <a class=" w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded">
             Dexscreener

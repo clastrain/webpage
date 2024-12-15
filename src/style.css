@@ -1,3 +1,11 @@
 .font-sans {
     font-family: var(--font-suisse),ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
 }
+a,button {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 238/var(--tw-text-opacity));
+    text-decoration-line: underline
+}
+a,button,h1,h2 {
+    font-weight: 700;
+}
